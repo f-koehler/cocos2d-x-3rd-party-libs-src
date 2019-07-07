@@ -1,0 +1,91 @@
+diff --git a/Configure b/Configure
+index bd57414..2fd8a71 100755
+--- a/Configure
++++ b/Configure
+@@ -14,7 +14,7 @@ use strict;
+ use File::Basename;
+ use File::Spec::Functions qw/:DEFAULT abs2rel rel2abs/;
+ use File::Path qw/mkpath/;
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ 
+ # see INSTALL for instructions.
+ 
+diff --git a/test/build.info b/test/build.info
+index 4550233..87250b8 100644
+--- a/test/build.info
++++ b/test/build.info
+@@ -289,7 +289,7 @@ ENDIF
+ {-
+    use File::Spec::Functions;
+    use File::Basename;
+-   use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++   use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ 
+    my @nogo_headers = ( "asn1_mac.h",
+                         "__decc_include_prologue.h",
+diff --git a/test/recipes/40-test_rehash.t b/test/recipes/40-test_rehash.t
+index fa05ca0..07d8735 100644
+--- a/test/recipes/40-test_rehash.t
++++ b/test/recipes/40-test_rehash.t
+@@ -13,7 +13,7 @@ use warnings;
+ use File::Spec::Functions;
+ use File::Copy;
+ use File::Basename;
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ use OpenSSL::Test qw/:DEFAULT bldtop_file/;
+ 
+ setup("test_rehash");
+diff --git a/test/recipes/80-test_ssl_new.t b/test/recipes/80-test_ssl_new.t
+index 7b8bc12..203dd92 100644
+--- a/test/recipes/80-test_ssl_new.t
++++ b/test/recipes/80-test_ssl_new.t
+@@ -12,7 +12,7 @@ use warnings;
+ 
+ use File::Basename;
+ use File::Compare qw/compare_text/;
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ 
+ use OpenSSL::Test qw/:DEFAULT srctop_dir srctop_file/;
+ use OpenSSL::Test::Utils qw/disabled alldisabled available_protocols/;
+diff --git a/test/recipes/90-test_fuzz.t b/test/recipes/90-test_fuzz.t
+index d152925..c576f2b 100755
+--- a/test/recipes/90-test_fuzz.t
++++ b/test/recipes/90-test_fuzz.t
+@@ -9,7 +9,7 @@
+ use strict;
+ use warnings;
+ 
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ use OpenSSL::Test qw/:DEFAULT srctop_file/;
+ use OpenSSL::Test::Utils;
+ 
+diff --git a/test/run_tests.pl b/test/run_tests.pl
+index 6550e0b..98e76f3 100644
+--- a/test/run_tests.pl
++++ b/test/run_tests.pl
+@@ -16,7 +16,7 @@ BEGIN {
+ 
+ use File::Spec::Functions qw/catdir catfile curdir abs2rel rel2abs/;
+ use File::Basename;
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ use Test::Harness qw/runtests $switches/;
+ 
+ my $srctop = $ENV{SRCTOP} || $ENV{TOP};
+diff --git a/util/process_docs.pl b/util/process_docs.pl
+index 8b8de81..75fd9cd 100644
+--- a/util/process_docs.pl
++++ b/util/process_docs.pl
+@@ -13,7 +13,7 @@ use File::Spec::Functions;
+ use File::Basename;
+ use File::Copy;
+ use File::Path;
+-use if $^O ne "VMS", 'File::Glob' => qw/glob/;
++use if $^O ne "VMS", 'File::Glob' => qw/bsd_glob/;
+ use Getopt::Long;
+ use Pod::Usage;
+ 

@@ -137,6 +137,7 @@ $(TARBALLS)/openssl-$(OPENSSL_VERSION).tar.gz:
 
 openssl: openssl-$(OPENSSL_VERSION).tar.gz .sum-openssl
 	$(UNPACK)
+	$(APPLY) $(SRC)/openssl/perl-file-glob.patch
 ifdef HAVE_ANDROID
 	$(APPLY) $(SRC)/openssl/android-clang.patch
 endif

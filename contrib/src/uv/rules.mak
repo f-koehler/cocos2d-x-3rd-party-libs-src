@@ -16,6 +16,6 @@ cmake_android_def = -DANDROID=1 -DCMAKE_SYSTEM_NAME=Android
 endif
 
 .uv: uv toolchain.cmake
-	cd $< && $(HOSTVARS) CFLAGS="$(CFLAGS) $(EX_ECFLAGS)" $(CMAKE) -DBUILD_TESTING=OFF $(cmake_android_def) $(make_option) 
+	cd $< && $(HOSTVARS) CFLAGS="$(CFLAGS) $(EX_ECFLAGS)" $(CMAKE) -DBUILD_TESTING=OFF -DCMAKE_INSTALL_LIBDIR=lib $(cmake_android_def) $(make_option)
 	cd $< && $(MAKE) VERBOSE=1 install
 	touch $@
